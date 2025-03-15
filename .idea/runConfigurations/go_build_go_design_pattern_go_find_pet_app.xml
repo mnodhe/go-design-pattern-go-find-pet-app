@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="go build go-design-pattern-go-find-pet-app" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+    <module name="go-design-pattern-go-find-pet-app" />
+    <working_directory value="$PROJECT_DIR$" />
+    <kind value="PACKAGE" />
+    <package value="go-design-pattern-go-find-pet-app" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>
