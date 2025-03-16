@@ -12,6 +12,10 @@ func (app *application) routes() http.Handler {
 	mux.Use(middleware.Recoverer)
 	mux.Use(middleware.Timeout(60 * time.Second)) // for nasty people that trying to add
 	mux.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("../../static"))))
+	// display test page
+	mux.Get("/test-patterns", app.TestPatterns)
+	mux.Get("/api/dog-from-factory", app.CreateDogFromFactory)
+	mux.Get("/api/cat-from-factory", app.CreateCatFromFactory)
 	mux.Get("/", app.ShowHome)
 	mux.Get("/{page}", app.ShowPage)
 	return mux
