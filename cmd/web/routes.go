@@ -16,6 +16,10 @@ func (app *application) routes() http.Handler {
 	mux.Get("/test-patterns", app.TestPatterns)
 	mux.Get("/api/dog-from-factory", app.CreateDogFromFactory)
 	mux.Get("/api/cat-from-factory", app.CreateCatFromFactory)
+
+	mux.Get("/api/cat-from-abstract-factory", app.CreateCatFromAbstractFactory)
+	mux.Get("/api/dog-from-abstract-factory", app.CreateDogFromAbstractFactory)
+
 	mux.Get("/", app.ShowHome)
 	mux.Get("/{page}", app.ShowPage)
 	return mux
