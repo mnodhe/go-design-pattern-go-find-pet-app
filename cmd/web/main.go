@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"go-design-pattern-go-find-pet-app/models"
+	"go-design-pattern-go-find-pet-app/configuration"
 	"html/template"
 	"log"
 	"net/http"
@@ -15,7 +15,7 @@ const port = ":4000"
 type application struct {
 	templateMap map[string]*template.Template
 	config      appConfig
-	Models      models.Models
+	App         *configuration.Application
 }
 type appConfig struct {
 	useCache bool
@@ -35,8 +35,8 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
-	app.Models = *models.New(db)
-
+	app.App = configuration.New(db) // singleton
+	
 	srv := &http.Server{
 		Addr:              port,
 		Handler:           app.routes(),
