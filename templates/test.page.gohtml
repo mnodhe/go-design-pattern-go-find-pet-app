@@ -71,6 +71,17 @@
                     }
                 })
         })
+        catBuilderBtn.addEventListener("click", function () {
+            fetch("/api/cat-from-builder", {method: 'get'})
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        builderOutput.innerHTML = data.error
+                    } else {
+                        builderOutput.innerHTML = JSON.stringify(data, undefined, 4)
+                    }
+                })
+        })
         document.addEventListener("DOMContentLoaded", function () {
             dogFactoryButton.addEventListener("click", function () {
                 fetch("/api/dog-from-factory", {method: 'get'})

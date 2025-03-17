@@ -76,3 +76,21 @@ func (app *application) CreateDogWithBuilder(w http.ResponseWriter, r *http.Requ
 	}
 	_ = t.WriteJSON(w, http.StatusOK, p)
 }
+func (app *application) CreateCatWithBuilder(w http.ResponseWriter, r *http.Request) {
+	var t toolbox.Tools
+	// create a cat using builder pattern
+	p, err := pets.NewPetBuilder().
+		SetSpecies("cat").
+		SetBreed("mixed").
+		SetWeight(4).
+		SetDescription("a beautiful cat").
+		SetColor("black and white").
+		SetAge(3).
+		SetAgeEstimated(true).
+		Build()
+	if err != nil {
+		_ = t.ErrorJSON(w, err, http.StatusBadRequest)
+		return
+	}
+	_ = t.WriteJSON(w, http.StatusOK, p)
+}
